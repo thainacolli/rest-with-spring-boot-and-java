@@ -1,8 +1,10 @@
 package br.com.rest.services;
 
 import br.com.rest.data.vo.v1.PersonVO;
+import br.com.rest.data.vo.v2.PersonVOV2;
 import br.com.rest.exceptions.ResourceNotFoundException;
 import br.com.rest.mapper.DozerMapper;
+import br.com.rest.mapper.custom.PersonMapper;
 import br.com.rest.models.Person;
 import br.com.rest.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,9 @@ public class PersonService {
 
     @Autowired
     PersonRepository repository;
+
+    @Autowired
+    PersonMapper mapper;
 
     private final AtomicLong counter = new AtomicLong();
 
@@ -47,6 +52,16 @@ public class PersonService {
         var entity = DozerMapper.parseObject(person, Person.class);
 
         var vo = DozerMapper.parseObject(repository.save(entity), PersonVO.class);
+
+        return vo;
+    }
+
+    public PersonVOV2 createV2(PersonVOV2 person) {
+        logger.info("Creating one person with V2!");
+
+        var entity = mapper.convertVoToEntity(person);
+
+        var vo = mapper.convertEntityToVo(repository.save(entity));
 
         return vo;
     }

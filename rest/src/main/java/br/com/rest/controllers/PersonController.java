@@ -2,6 +2,7 @@ package br.com.rest.controllers;
 
 
 import br.com.rest.data.vo.v1.PersonVO;
+import br.com.rest.data.vo.v2.PersonVOV2;
 import br.com.rest.models.Person;
 import br.com.rest.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,14 @@ public class PersonController {
     public PersonVO create(@RequestBody PersonVO person) {
 
         return service.create(person);
+    }
+
+    @PostMapping(value = "/{v2}",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public PersonVOV2 createV2(@RequestBody PersonVOV2 person) {
+
+        return service.createV2(person);
     }
 
 
