@@ -40,6 +40,14 @@
 			<version>8.0.31</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.github.dozermapper</groupId>
+			<artifactId>dozer-core</artifactId>
+			<version>6.4.0</version>
+		</dependency>
+
+
+
 
 	</dependencies>
 
