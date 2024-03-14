@@ -54,6 +54,8 @@ class PersonServiceTest {
         assertNotNull(result);
         assertNotNull(result.getKey());
         assertNotNull(result.getLinks());
+
+
         assertTrue(result.toString().contains("[</api/person/${app.version}/1>;rel=\"self\"]"));
         assertEquals("Addres Test1", result.getAddress());
         assertEquals("First Name Test1", result.getFirstName());
@@ -107,7 +109,7 @@ class PersonServiceTest {
         Person entity = input.mockEntity(1);
 
         Person persisted = entity;
-        persisted.setId(1l);
+        persisted.setId(1L);
 
         PersonVO vo = input.mockVO(1);
         vo.setKey(1L);
@@ -133,10 +135,11 @@ class PersonServiceTest {
             service.create(null);
         });
 
-        String expectedMessage = "It is not allowed to persista null object!";
+        String expectedMessage = "It is not allowed to persist null object!";
         String actualMessage = exception.getMessage();
-        assertTrue(actualMessage.contains(expectedMessage));
 
+
+        assertTrue(actualMessage.contains(expectedMessage));
     }
 
     @Test
@@ -174,7 +177,7 @@ class PersonServiceTest {
             service.update(null);
         });
 
-        String expectedMessage = "It is not allowed to persista null object!";
+        String expectedMessage = "It is not allowed to persist null object!";
         String actualMessage = exception.getMessage();
         assertTrue(actualMessage.contains(expectedMessage));
 

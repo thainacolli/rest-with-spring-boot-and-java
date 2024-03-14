@@ -12,9 +12,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
 import java.util.logging.Logger;
 
 
@@ -23,8 +21,6 @@ public class PersonService {
 
     @Autowired
     PersonRepository repository;
-
-    private final AtomicLong counter = new AtomicLong();
 
     private Logger logger = Logger.getLogger(PersonService.class.getName());
 
@@ -75,6 +71,7 @@ public class PersonService {
         entity.setFirstName(person.getFirstName());
         entity.setLastName(person.getLastName());
         entity.setAddress(person.getAddress());
+
         entity.setGender(person.getGender());
 
         var vo = DozerMapper.parseObject(repository.save(entity), PersonVO.class);

@@ -14,6 +14,6 @@ public class RequiredObjectIsNullException extends RuntimeException {
 
     public RequiredObjectIsNullException() {
 
-        super("It is not allowed to persista null object!");
+        super("It is not allowed to persist null object!");
     }
 }

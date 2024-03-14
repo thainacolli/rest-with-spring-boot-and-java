@@ -6,5 +6,3 @@ CREATE TABLE `person` (
   `gender` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 );
-
-
