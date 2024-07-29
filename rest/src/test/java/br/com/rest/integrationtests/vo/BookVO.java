@@ -1,23 +1,22 @@
-package br.com.rest.data.vo.v1;
+package br.com.rest.integrationtests.vo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.github.dozermapper.core.Mapping;
-import org.springframework.hateoas.RepresentationModel;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
 
-@JsonPropertyOrder({"id", "author", "launchDate", "price", "title"})
-public class BookVO extends RepresentationModel<BookVO> implements Serializable {
+@XmlRootElement
+public class BookVO implements Serializable {
 
 
 
-    @Mapping("id")
-    @JsonProperty("id")
-    private long key;
+
+    private long id;
 
     public BookVO() {
     }
@@ -30,12 +29,12 @@ public class BookVO extends RepresentationModel<BookVO> implements Serializable 
 
     private String title;
 
-    public long getKey() {
-        return key;
+    public long getId() {
+        return id;
     }
 
-    public void setKey(long key) {
-        this.key = key;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getAuthor() {
@@ -75,11 +74,11 @@ public class BookVO extends RepresentationModel<BookVO> implements Serializable 
         if (this == o) return true;
         if (!(o instanceof BookVO bookVO)) return false;
         if (!super.equals(o)) return false;
-        return getKey() == bookVO.getKey() && getAuthor().equals(bookVO.getAuthor()) && getLaunchDate().equals(bookVO.getLaunchDate()) && getPrice().equals(bookVO.getPrice()) && getTitle().equals(bookVO.getTitle());
+        return getId() == bookVO.getId() && getAuthor().equals(bookVO.getAuthor()) && getLaunchDate().equals(bookVO.getLaunchDate()) && getPrice().equals(bookVO.getPrice()) && getTitle().equals(bookVO.getTitle());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getKey(), getAuthor(), getLaunchDate(), getPrice(), getTitle());
+        return Objects.hash(super.hashCode(), getId(), getAuthor(), getLaunchDate(), getPrice(), getTitle());
     }
 }

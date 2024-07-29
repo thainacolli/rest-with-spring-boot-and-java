@@ -1,8 +1,11 @@
-package br.com.rest.data.vo.v1.security;
+package br.com.rest.integrationtests.vo;
+
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 import java.io.Serializable;
 import java.util.Objects;
 
+@XmlRootElement
 public class AccountCredentialsVO implements Serializable {
 
     private String userName;
